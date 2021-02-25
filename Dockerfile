@@ -37,6 +37,7 @@ RUN  echo steam steam/question select "I AGREE" | debconf-set-selections \
 	&& mkdir -p /home/valheim/server /home/valheim/.config/unity3d/IronGate /data \
 	&& ln -s /data /home/valheim/.config/unity3d/IronGate/Valheim \
 	&& chown valheim:valheim /usr/local/bin/entrypoint.sh \
+    && chmod +x /usr/local/bin/entrypoint.sh \
 	&& chown -R valheim:valheim /home/valheim \
 	&& chown valheim:valheim /data
 

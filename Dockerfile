@@ -32,8 +32,10 @@ RUN  echo steam steam/question select "I AGREE" | debconf-set-selections \
     && locale-gen \
     && apt-get clean \
     && ln -s /usr/games/steamcmd /usr/bin/steamcmd \
-    && steamcmd +quit \
-    && useradd --create-home valheim --shell /bin/bash --comment valheim \
+    && steamcmd +quit
+
+# Configure Valheim directories and entrypoint file
+RUN useradd --create-home valheim --shell /bin/bash --comment valheim \
     && mkdir -p /home/valheim/server /home/valheim/.config/unity3d/IronGate /data \
     && ln -s /data /home/valheim/.config/unity3d/IronGate/Valheim \
     && chown valheim:valheim /usr/local/bin/entrypoint.sh \

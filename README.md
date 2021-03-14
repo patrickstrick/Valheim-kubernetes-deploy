@@ -29,3 +29,9 @@ Exposes game server's ports as node ports.
 **NOTE** The container image linked in the deployment is manually updated by me, and might not be up to date with the contents of this repo.
 You should build your own container from the Dockerfile and push it to your own container registry.
 Then update the deploy.yaml to point to your registry location.
+
+### Mods
+Work in progress
+Sources:  
+* https://valheim.thunderstore.io/package/denikson/BepInExPack_Valheim/
+* https://www.nexusmods.com/valheim/mods/300

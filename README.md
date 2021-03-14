@@ -31,7 +31,7 @@ You should build your own container from the Dockerfile and push it to your own 
 Then update the deploy.yaml to point to your registry location.
 
 ### Mods
-Work in progress
+Work in progress  
 Sources:  
 * https://valheim.thunderstore.io/package/denikson/BepInExPack_Valheim/
 * https://www.nexusmods.com/valheim/mods/300

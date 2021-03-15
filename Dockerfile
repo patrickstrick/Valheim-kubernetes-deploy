@@ -51,10 +51,19 @@ EXPOSE 2456/udp 2457/udp 2458/udp
 # Install Valheim dedicated server
 RUN steamcmd +login anonymous +force_install_dir /home/valheim/server +app_update 896660 +quit
 
+#Copy Mod files into Valheim server directory
+COPY ./mods/BepInEx/BepInExPack_Valheim/ /home/valheim/server/
+COPY ./mods/MapSharingMadeEasy/MapSharingMadeEasy.dll /home/valheim/server/BepInEx/plugins/
+
 # Run script when container starts to update Valheim if needed and run server.
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 WORKDIR /home/valheim
-CMD SteamAppId=892970 LD_LIBRARY_PATH="/home/valheim/server/linux64/" \
+CMD SteamAppId=892970 \
+    LD_LIBRARY_PATH="/home/valheim/server/doorstop_libs:/home/valheim/server/linux64/" \
+    DOORSTOP_ENABLE=TRUE \
+    DOORSTOP_INVOKE_DLL_PATH=/home/valheim/server/BepInEx/core/BepInEx.Preloader.dll \
+    DOORSTOP_CORLIB_OVERRIDE_PATH=/home/valheim/server/unstripped_corlib \
+    LD_PRELOAD="/home/valheim/server/doorstop_libs/libdoorstop_x64.so" \
     /home/valheim/server/valheim_server.x86_64 \
     -name ${SERVER_NAME} \
     -world ${SERVER_WORLD} \

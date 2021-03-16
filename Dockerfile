@@ -52,8 +52,8 @@ EXPOSE 2456/udp 2457/udp 2458/udp
 RUN steamcmd +login anonymous +force_install_dir /home/valheim/server +app_update 896660 +quit
 
 #Copy Mod files into Valheim server directory
-COPY ./mods/BepInEx/BepInExPack_Valheim/ /home/valheim/server/
-COPY ./mods/MapSharingMadeEasy/MapSharingMadeEasy.dll /home/valheim/server/BepInEx/plugins/
+COPY --chown=valheim:valheim ./mods/BepInEx/BepInExPack_Valheim/ /home/valheim/server/
+COPY --chown=valheim:valheim ./mods/MapSharingMadeEasy/MapSharingMadeEasy.dll /home/valheim/server/BepInEx/plugins/
 
 # Run script when container starts to update Valheim if needed and run server.
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

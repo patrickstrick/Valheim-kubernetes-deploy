@@ -6,7 +6,7 @@ DATE=$(date '+%Y-%m-%d %H:%M:%S')
 echo "Initalizing container..."
 
 check_files_exist() {
-  FILE="./server/valheim_server.x86_64"
+  FILE="server/valheim_server.x86_64"
   if [ -f "$FILE" ]; then
     return 0;
   else
@@ -15,7 +15,7 @@ check_files_exist() {
 }
 
 update_files() {
-  steamcmd +login anonymous +force_install_dir /home/valheim/server +app_update 896660 +quit
+  steamcmd/steamcmd +login anonymous +force_install_dir /home/valheim/server +app_update 896660 +quit
 }
 
 if ! check_files_exist; then

@@ -15,7 +15,7 @@ check_files_exist() {
 }
 
 update_files() {
-  steamcmd/steamcmd +login anonymous +force_install_dir /home/valheim/server +app_update 896660 +quit
+  steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/valheim/server +app_update 896660 +quit
 }
 
 if ! check_files_exist; then

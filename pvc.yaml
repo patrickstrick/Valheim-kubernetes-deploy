@@ -1,0 +1,17 @@
+# Create PVC for game state data.
+# Assuming dynamic PV creation. If not, create PV first.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: valheim-pv-claim
+  namespace: valheim
+  labels:
+    app: valheim-server
+spec:
+  storageClassName: kubevirt-hostpath-provisioner
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+

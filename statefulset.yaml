@@ -17,8 +17,8 @@ spec:
       terminationGracePeriodSeconds: 60
       containers:
       - name: valheim-server
-        image: image-registry.openshift-image-registry.svc:5000/valheim/valheim-server:latest
-        imagePullPolicy: Always
+        image: quay.io/pstrick/valheim:latest 
+        imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 2456
             protocol: UDP

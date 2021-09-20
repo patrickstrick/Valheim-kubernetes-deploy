@@ -46,6 +46,8 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
+        storageClassName: kubevirt-hostpath-provisioner
         resources:
           requests:
             storage: 3Gi
+
